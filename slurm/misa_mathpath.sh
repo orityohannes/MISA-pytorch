@@ -5,17 +5,16 @@
 #SBATCH --mail-user=oyohannes1@student.gsu.edu
 #SBATCH --chdir=/data/users3/oyohannes1/MISA-pytorch
 #
-#SBATCH -p qTRDGPU
-#SBATCH --gres=gpu:A40:1
-#SBATCH --array=0-2
+#SBATCH -p qTRDGPUH
+#SBATCH --gres=gpu:V100:1
 #SBATCH --account=trends53c17
 #SBATCH --job-name=MISAtorch
 #SBATCH --verbose
 #SBATCH --time=7200
 #
 #SBATCH --nodes=1
-#SBATCH --mem=128g
-#SBATCH --cpus-per-task=32
+#SBATCH --mem=90g
+#SBATCH --cpus-per-task=10
 
 
 sleep 5s
@@ -36,7 +35,7 @@ declare -i n_source=12
 declare -i n_sample=32768
 lrs=(0.001 0.100 0.001 0.100 0.010 0.010 0.100)
 
-batch_size=(100.0 100.0 100.0 1000.0 1000.0 316.0 1000.0)
+batch_size=(100 100 100 1000 1000 316 1000)
 patience=(10.0 100.0 10.0 10.0 100.0 32.0 32.0)
 
 #Adam optimizer parameters
